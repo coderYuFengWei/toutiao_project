@@ -1,8 +1,6 @@
 <template>
-  <div class='blue'>今天是星期六，明天不放假~！！
-
-<router-link to='/login'>aa</router-link>
-
+  <div>
+<!-- 占位符 -->
  <router-view> </router-view>
 
   </div>
@@ -17,8 +15,29 @@ export default {
 }
 </script>
 
+
 <style>
-.blue{
-    color:deeppink;
+@import url('http://at.alicdn.com/t/font_1426139_h6vn3jbl5q.css');
+@import url('../node_modules/vant/lib/index.css');
+
+/* 公共样式 */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  color:inherit;
+}
+
+a:hover{
+  text-decoration: none;
+}
+ul,li,ol{
+  list-style: none;
+}
+
+i,em{
+  font-style:normal;
 }
 </style>
