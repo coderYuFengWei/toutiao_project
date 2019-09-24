@@ -39,7 +39,7 @@
 
     <p class="tips">
       有账号?
-      <router-link to="/register">立即登录</router-link>
+      <router-link to="/login">立即登录</router-link>
     </p>
 
     <authButton text="注册" @click="handleSubmit"></authButton>
@@ -65,7 +65,7 @@ export default {
     //按钮提交事件
     handleSubmit() {
       this.$axios({
-        url: "/login",
+        url: "/register",
         method: "POST",
         data: this.form
       }).then(res => {

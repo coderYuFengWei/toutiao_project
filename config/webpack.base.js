@@ -6,6 +6,7 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     // entry: './src/index.js',
@@ -72,6 +73,9 @@ module.exports = {
             template: 'public/index.html'
         }),
         new CleanWebpackPlugin(),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new CopyPlugin([
+            {from:'static',to:'static'}
+        ])
     ]
 }
