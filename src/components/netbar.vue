@@ -2,7 +2,7 @@
   <div class="netbar" @click="$emit('click',$event)">
       <div class="cell">
           <span>{{label}}</span>
-          <i>{{text}}</i>
+          <i>{{type==='password'?'******':text}}</i>
           <span class="iconfont iconjiantou1"></span>
       </div>
 
@@ -13,7 +13,8 @@
 export default {
     props:[
         "label",
-        "text"
+        "text",
+        "type"
     ]
 }
 </script>

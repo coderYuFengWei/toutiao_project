@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/edit_profile">
     <div class="profile">
       <img :src="profile.head_img" alt />
       <div class="profile-center">
@@ -11,6 +12,7 @@
       </div>
       <span class="iconfont iconjiantou1"></span>
     </div>
+    </router-link>
 
     <!-- 条形组件 -->
     <netbar label="我的关注" text="关注的用户" />
@@ -55,7 +57,7 @@ export default {
       if (data) {
         this.profile = data;
         if (data.head_img) {
-          this.profile.head_img = this.$axios.defaults.baseURL + data_head_img;
+          this.profile.head_img = this.$axios.defaults.baseURL + data.head_img;
         } else {
           this.profile.head_img = "./static/kobe.jpg";
         }
