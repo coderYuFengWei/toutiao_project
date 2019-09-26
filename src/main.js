@@ -8,8 +8,7 @@ import register from '@/pages/register.vue';
 import personal from '@/pages/personal.vue';
 import {Toast} from "vant"
 import editProfile from '@/pages/editProfile.vue';
-
-
+import myFollow from '@/pages/myFollow.vue';
 
 
 
@@ -37,6 +36,10 @@ let routes = [{
     {
         path: '/edit_profile',
         component: editProfile
+    },
+    {
+        path: '/my_follow',
+        component: myFollow
     }
 ]
 
@@ -44,10 +47,11 @@ let router = new Router({
     routes
 })
 
+//路由卫士
 router.beforeEach((to, from, next) => {
     let hasToken = localStorage.getItem('token')
 
-    if (to.path === "/personal" || to.path === "/edit_profile") {
+    if (to.path === "/personal" || to.path === "/edit_profile" || to.path==="/my_follow") {
         if (hasToken) {
             next();
         } else {

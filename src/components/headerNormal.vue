@@ -1,7 +1,7 @@
 <template>
   <div class="head">
     <span class="iconfont iconjiantou2" @click="$router.back()"></span>
-    <h3>编辑资料</h3>
+    <h3>{{text}}</h3>
     <span>>></span>
   </div>
 </template>
