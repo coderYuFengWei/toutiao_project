@@ -9,6 +9,7 @@ import personal from '@/pages/personal.vue';
 import {Toast} from "vant"
 import editProfile from '@/pages/editProfile.vue';
 import myFollow from '@/pages/myFollow.vue';
+import myComments from '@/pages/myComments.vue';
 
 
 
@@ -40,7 +41,12 @@ let routes = [{
     {
         path: '/my_follow',
         component: myFollow
-    }
+    },
+    {
+        path: '/my_comments',
+        component: myComments
+    },
+    
 ]
 
 let router = new Router({

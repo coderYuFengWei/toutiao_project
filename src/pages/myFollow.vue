@@ -1,6 +1,6 @@
 <template>
   <div>
-    <headerNormal text="我的关注" />
+    <HeaderNormal text="我的关注" />
 
     <div class="focus" v-for="(item,index) in list" :key="index">
       <img :src="$axios.defaults.baseURL+item.head_img" alt />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import HeaderNormal from "@/components/HeaderNormal";
+import HeaderNormal from "@/components/headerNormal";
 
 export default {
   data() {

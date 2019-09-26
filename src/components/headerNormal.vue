@@ -14,7 +14,7 @@ export default {
 };
 </script>
 
-<style coped lang="less">
+<style scoped lang="less">
 .head{
     height: 60/360*100vw;
     width: 100%;
@@ -26,7 +26,7 @@ export default {
         padding: 0 10px;
     }
     span:last-child{
-        opacity:0
+        opacity:0;
     }
 }
 </style>
