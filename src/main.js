@@ -10,6 +10,8 @@ import {Toast} from "vant"
 import editProfile from '@/pages/editProfile.vue';
 import myFollow from '@/pages/myFollow.vue';
 import myComments from '@/pages/myComments.vue';
+import index from '@/pages/index.vue';
+
 
 
 
@@ -45,6 +47,10 @@ let routes = [{
     {
         path: '/my_comments',
         component: myComments
+    },
+    {
+        path: '/',
+        component: index
     },
     
 ]
