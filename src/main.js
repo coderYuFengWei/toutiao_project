@@ -11,6 +11,7 @@ import editProfile from '@/pages/editProfile.vue';
 import myFollow from '@/pages/myFollow.vue';
 import myComments from '@/pages/myComments.vue';
 import index from '@/pages/index.vue';
+import postDetail from '@/pages/postDetail.vue';
 
 
 
@@ -51,6 +52,10 @@ let routes = [{
     {
         path: '/',
         component: index
+    },
+    {
+        path: '/postDetail/:id',
+        component: postDetail
     },
     
 ]

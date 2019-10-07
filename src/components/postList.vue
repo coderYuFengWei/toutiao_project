@@ -3,22 +3,36 @@
     <!-- 单张图片 -->
     <div class="post_pic" v-if="post.cover.length>0&&post.cover.length<3">
       <div class="post_left">
-        <div class="title">{{post.title}}</div>
+        <router-link :to="`/postDetail/${post.id}`">
+          <div class="title">{{post.title}}</div>
+        </router-link>
         <p>
           <span class="username">{{post.user.nickname}}</span>
           <span class="follow">{{post.comment_length}}跟帖</span>
         </p>
       </div>
-      <div class="post_right">
-        <img :src="post.cover[0].url" alt />
-      </div>
+      <router-link :to="`/postDetail/${post.id}`">
+        <div class="post_right">
+          <img :src="post.cover[0].url" alt />
+        </div>
+      </router-link>
     </div>
 
     <!-- 多张图片 -->
     <div class="post_pics" v-if="post.cover.length>=3">
-      <div class="post_title">{{post.title}}</div>
+      <router-link :to="`/postDetail/${post.id}`">
+        <div class="post_title">{{post.title}}</div>
+      </router-link>
       <div class="img_list">
-        <img :src="item.url" v-for="(item,index) in post.cover" :key="index" v-show="index<=3" alt />
+        <router-link :to="`/postDetail/${post.id}`">
+          <img
+            :src="item.url"
+            v-for="(item,index) in post.cover"
+            :key="index"
+            v-show="index<=3"
+            alt
+          />
+        </router-link>
       </div>
       <p class="post_info">
         <span>{{post.user.nickname}}</span>
@@ -29,12 +43,14 @@
     <!-- 视频 -->
     <div class="video" v-if="post.type===2&&post.cover.length===1">
       <p class="post_title">{{post.title}}</p>
-      <div class="video_img">
-        <img :src="post.cover[0].url" alt />
-        <span class="video_layer">
-          <i class="iconfont iconshipin"></i>
-        </span>
-      </div>
+      <router-link :to="`/postDetail/${post.id}`">
+        <div class="video_img">
+          <img :src="post.cover[0].url" alt />
+          <span class="video_layer">
+            <i class="iconfont iconshipin"></i>
+          </span>
+        </div>
+      </router-link>
       <p class="post_info">
         <span>{{post.user.nickname}}</span>
         <span>{{post.comment_length}}跟帖</span>
@@ -154,7 +170,6 @@ export default {
         font-size: 30px;
       }
     }
-    
   }
 
   .post_info {
