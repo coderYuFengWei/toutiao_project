@@ -24,7 +24,7 @@
         <div class="post_title">{{post.title}}</div>
       </router-link>
       <div class="img_list">
-        <router-link :to="`/postDetail/${post.id}`">
+        <router-link :to="`/postDetail/${post.id}`" class="img-list">
           <img
             :src="item.url"
             v-for="(item,index) in post.cover"
@@ -112,7 +112,7 @@ export default {
     -webkit-line-clamp: 2;
     overflow: hidden;
   }
-  .img_list {
+  .img-list {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;

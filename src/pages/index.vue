@@ -2,10 +2,14 @@
   <div>
     <div class="header">
       <span class="iconfont iconnew logo"></span>
-      <div class="header_search">
-        <span class="iconfont iconsearch"></span>
-        <i>搜索新闻</i>
-      </div>
+
+      <router-link to="/search" class="link-search">
+        <div class="header_search">
+          <span class="iconfont iconsearch"></span>
+          <i>搜索新闻</i>
+        </div>
+      </router-link>
+
       <router-link to="/personal">
         <span class="iconfont iconwode personal"></span>
       </router-link>
@@ -61,7 +65,7 @@ export default {
         }).then(res => {
           let { data } = res.data;
           if (data.length < this.pageSize) {
-            category.finished= true;
+            category.finished = true;
           }
           category.posts = [...category.posts, ...data];
           category.pageIndex++;
@@ -118,6 +122,11 @@ export default {
   .logo {
     font-size: 52/360 * 100vw;
     color: #fff;
+  }
+  .link-search {
+    display: flex;
+    flex: 1;
+    margin: 0 15px;
   }
   .header_search {
     flex: 1;

@@ -13,6 +13,7 @@ import myComments from '@/pages/myComments.vue';
 import index from '@/pages/index.vue';
 import postDetail from '@/pages/postDetail.vue';
 import comments from '@/pages/comments.vue';
+import search from '@/pages/search.vue';
 
 
 
@@ -62,7 +63,10 @@ let routes = [{
         path: '/post_comments/:id',
         component: comments
     },
-    
+    {
+        path: '/search',
+        component: search
+    },
 ]
 
 let router = new Router({

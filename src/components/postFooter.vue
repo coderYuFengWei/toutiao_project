@@ -3,10 +3,13 @@
     <div class="footer" v-show="!isFocus">
       <input type="text" placeholder="写跟贴" @focus="handleFocus" />
 
-      <span class="comment" @click="$router.push(`/post_comments/${post.id}`)">
+      <!-- <span class="comment" @click="$router.push(`/post_comments/${post.id}`)"> -->
+      <router-link :to="`/post_comments/${post.id}`">
+        <span class="comment">
         <em>{{post.comment_length}}</em>
         <i class="iconfont iconpinglun-"></i>
       </span>
+      </router-link>
 
       <!-- 收藏 -->
       <i
