@@ -3,7 +3,7 @@
     <div class="footer" v-show="!isFocus">
       <input type="text" placeholder="写跟贴" @focus="handleFocus" />
 
-      <span class="comment">
+      <span class="comment" @click="$router.push(`/post_comments/${post.id}`)">
         <em>{{post.comment_length}}</em>
         <i class="iconfont iconpinglun-"></i>
       </span>
@@ -19,8 +19,15 @@
     </div>
 
     <div class="footer_comment" v-show="isFocus">
-      <textarea rows="3" ref="textarea" @blur="isFocus=false" :autofocus="isFocus"></textarea>
-      <span>发送</span>
+      <textarea
+        rows="3"
+        v-model="value"
+        :placeholder="placeholder"
+        ref="textarea"
+        @blur="handleBlur"
+        :autofocus="isFocus"
+      ></textarea>
+      <span @click="handleSubmit">发送</span>
     </div>
   </div>
 </template>
@@ -29,13 +36,70 @@
 export default {
   data() {
     return {
-      isFocus: false
+      isFocus: false,
+      value: "",
+      placeholder: "写跟贴"
     };
   },
-  props: ["post"],
+
+  props: ["post", "replyComment"],
+
+  watch: {
+    replyComment() {
+      if (this.replyComment) {
+        this.isFocus = true;
+        this.placeholder = "@" + this.replyComment.user.nickname;
+      }
+    }
+  },
+
   methods: {
     handleFocus() {
-      this.isFocus = false;
+      this.isFocus = true;
+    },
+
+    handleBlur() {
+      if (!this.value) {
+        this.isFocus = false;
+
+        if (this.replyComment) {
+          this.$emit("handleReply", null);
+          this.placeholder = "写跟贴";
+        }
+      }
+    },
+
+    handleSubmit() {
+      if (!this.value) {
+        return;
+      }
+
+      let data = {
+        content: this.value
+      };
+
+      if (this.replyComment) {
+        data.parent_id = this.replyComment.id;
+      }
+      this.$axios({
+        url: "/post_comment/" + this.post.id,
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token")
+        },
+        data
+      }).then(res => {
+        let { message } = res.data;
+        console.log(message);
+        if (message === "评论发布成功") {
+          this.$emit("getComments", this.post.id, "isReply");
+          this.post.comment_length++;
+          this.isFocus = false;
+          this.value = "";
+
+          window.scrollTo(0, 0);
+        }
+      });
     }
   }
 };
@@ -54,7 +118,7 @@ export default {
   background: #fff;
 }
 
-.footer-comment {
+.footer_comment {
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
