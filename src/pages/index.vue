@@ -24,7 +24,7 @@
           @load="onLoad"
           :immediate-check="false"
         >
-          <postList v-for="(item,index) in item.posts" :post="item" :key="index" />
+          <postList v-for="(item,index) in item.posts"  v-show="item.open === 1" :post="item" :key="index" />
         </van-list>
 
         <van-loading
