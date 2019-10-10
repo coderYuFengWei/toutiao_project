@@ -18,6 +18,7 @@
 <script>
 import postList from "@/components/postList";
 export default {
+  name:"search",
   components: {
     postList
   },
@@ -35,6 +36,19 @@ export default {
         let { data } = res.data;
         this.list = data;
       });
+    },
+
+    // 组件内的路由守卫，判断如果是首页进入到搜索页的，清空页面的缓存数据
+    // https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E7%BB%84%E4%BB%B6%E5%86%85%E7%9A%84%E5%AE%88%E5%8D%AB
+    beforeRouterEnter(to,from,next){
+      if(from.path==="\/"){
+        next(vm=>{
+          vm.keyword = "";
+          vm.list = [];
+        })
+      }else{
+        next();
+      }
     }
   }
 };
